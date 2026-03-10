@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+  <view class="header">
+    <text class="title">期末成绩查询</text>
+  </view>
+
+  <view class="search-box">
+    <input 
+      class="input" 
+      placeholder="请输入您的学号" 
+      type="number" 
+      bindinput="onInput" 
+      value="{{inputVal}}"
+    />
+    <button class="btn" bindtap="searchScore">查询</button>
+  </view>
+
+  <view class="result-card" wx:if="{{result}}">
+    <view class="result-header">查询结果</view>
+    <view class="result-item">
+      <text class="label">学号：</text>
+      <text class="value">{{result.id}}</text>
+    </view>
+    <view class="result-row">
+      <view class="score-box">
+        <text class="score-num">{{result.ps}}</text>
+        <text class="score-label">平时成绩</text>
+      </view>
+      <view class="score-box">
+        <text class="score-num">{{result.qm}}</text>
+        <text class="score-label">期末成绩</text>
+      </view>
+      <view class="score-box total">
+        <text class="score-num">{{result.zc}}</text>
+        <text class="score-label">总成绩</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="no-result" wx:if="{{hasSearched && !result}}">
+    <icon type="warn" size="40" color="#e64340"></icon>
+    <text class="error-text">{{error}}</text>
+  </view>
+</view>
+</scroll-view>
