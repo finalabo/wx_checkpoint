@@ -1,8 +1,6 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
+<view class="container">
   <view class="header">
-    <text class="title">期末成绩查询</text>
+    <text class="title">成绩查询</text>
   </view>
 
   <view class="search-box">
@@ -22,19 +20,32 @@
       <text class="label">学号：</text>
       <text class="value">{{result.id}}</text>
     </view>
+    
     <view class="result-row">
       <view class="score-box">
-        <text class="score-num">{{result.ps}}</text>
-        <text class="score-label">平时成绩</text>
+        <text class="score-num">{{result.kg}}</text>
+        <text class="score-label">客观题</text>
       </view>
       <view class="score-box">
-        <text class="score-num">{{result.qm}}</text>
-        <text class="score-label">期末成绩</text>
+        <text class="score-num">{{result.zg}}</text>
+        <text class="score-label">主观题</text>
       </view>
       <view class="score-box total">
         <text class="score-num">{{result.zc}}</text>
         <text class="score-label">总成绩</text>
       </view>
+    </view>
+
+    <view class="details-divider"></view>
+    <view class="details-title">各题型详细得分</view>
+    
+    <view class="details-grid">
+      <block wx:for="{{result.details}}" wx:key="name">
+        <view class="detail-item">
+          <text class="detail-name">{{item.name}}</text>
+          <text class="detail-score">{{item.score}}</text>
+        </view>
+      </block>
     </view>
   </view>
 
@@ -43,4 +54,3 @@
     <text class="error-text">{{error}}</text>
   </view>
 </view>
-</scroll-view>
